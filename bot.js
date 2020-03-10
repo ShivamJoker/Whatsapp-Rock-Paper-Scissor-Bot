@@ -7,10 +7,42 @@ const randomRPCEmo = () => {
   return emojis[random];
 };
 
+const allEmos = {
+  papers: ["🖐", "✋", "🤚"],
+  scissors: ["✌"], //it's a yellow hand u cant see it
+  rocks: ["✊", "👊", "🤛", "🤜"]
+};
 const emos = { paper: "🖐", scissor: "✌", rock: "✊" };
 
 const runGame = userEmo => {
   const botEmo = randomRPCEmo();
+
+  const emojiEntry = Object.entries(allEmos).find(emoji =>
+    emoji.startsWith(userEmo)
+  );
+
+  if (!emojiEntry) {
+    return console.log("no valid emoji found");
+  }
+
+  const [type, allColorVariants] = emojiEntry;
+
+  console.log(type, allColorVariants);
+
+  // const isEmoThere = emoj => {
+  //   allEmos[emoj + "s"].forEach(el => {
+  //     console.log(el);
+
+  //     if (userEmo.startsWith(el)) {
+  //       userEmo = emoj;
+  //     }
+  //   });
+  // };
+  // for (const emoji in emos) {
+  //   console.log(emoji);
+
+  //   isEmoThere(emoji);
+  // }
 
   const isitWin = () => {
     //winning condition for bot user will lose
