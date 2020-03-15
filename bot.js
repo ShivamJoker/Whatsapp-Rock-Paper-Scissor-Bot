@@ -1,5 +1,6 @@
 const http = require("http");
 
+//get a random emoji
 const randomRPCEmo = () => {
   //rock paper scissors emoji
   const emojis = ["✌", "✊", "🖐"];
@@ -7,6 +8,7 @@ const randomRPCEmo = () => {
   return emojis[random];
 };
 
+//
 const allEmos = {
   papers: ["🖐", "✋", "🤚"],
   scissors: ["✌"], //it's a yellow hand u cant see it
@@ -17,32 +19,21 @@ const emos = { paper: "🖐", scissor: "✌", rock: "✊" };
 const runGame = userEmo => {
   const botEmo = randomRPCEmo();
 
-  const emojiEntry = Object.entries(allEmos).find(emoji =>
-    emoji.startsWith(userEmo)
-  );
+  const emojiEntry = Object.entries(allEmos)
+    // Destructure the type like "papers" and the array of emojis
+    // Check if the incoming emoji is in the array
+    .find(([type, emojis]) => emojis.some(e => userEmo.startsWith(e)));
 
   if (!emojiEntry) {
     return console.log("no valid emoji found");
   }
 
+  // Destructure the type like "rocks", "papers" and the array
   const [type, allColorVariants] = emojiEntry;
 
+  userEmo = allColorVariants[0]
+
   console.log(type, allColorVariants);
-
-  // const isEmoThere = emoj => {
-  //   allEmos[emoj + "s"].forEach(el => {
-  //     console.log(el);
-
-  //     if (userEmo.startsWith(el)) {
-  //       userEmo = emoj;
-  //     }
-  //   });
-  // };
-  // for (const emoji in emos) {
-  //   console.log(emoji);
-
-  //   isEmoThere(emoji);
-  // }
 
   const isitWin = () => {
     //winning condition for bot user will lose
