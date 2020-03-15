@@ -10,7 +10,7 @@ const randomRPSEmo = () => {
 
 const emos = { paper: "🖐", scissor: "✌", rock: "✊" };
 
-const [rock, paper, scissor] = emos; //destructre
+const {rock, paper, scissor} = emos; //destructre
 
 //login what will beat what
 const matches = {
@@ -42,7 +42,7 @@ if (matches[userEmo] === botEmo)
       }
     };
 
-    //
+    //now return the message in this format 
     return { replies: [{ message: botEmo }, { message: isitWin() }] };
   };
 
@@ -67,7 +67,7 @@ const server = http.createServer((req, res) => {
       res.end(JSON.stringify(reply));
     } catch (error) {
       console.log(error);
-      res.end("Whatsup");
+      res.end("Whatsup go to hell");
     }
   });
 });

@@ -1,6 +1,6 @@
 const http = require("http");
 
-//get a random emoji
+//get a random emoji of rock paper scissors
 const randomRPCEmo = () => {
   //rock paper scissors emoji
   const emojis = ["✌", "✊", "🖐"];
@@ -15,6 +15,15 @@ const allEmos = {
   rocks: ["✊", "👊", "🤛", "🤜"]
 };
 const emos = { paper: "🖐", scissor: "✌", rock: "✊" };
+
+const {rock, paper, scissor} = emos; //destructre
+
+//login what will beat what
+const matches = {
+  [scissor]: paper,
+  [paper]: rock,
+  [rock]: scissor
+};
 
 const runGame = userEmo => {
   const botEmo = randomRPCEmo();
