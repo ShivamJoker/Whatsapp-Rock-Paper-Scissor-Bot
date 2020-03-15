@@ -31,28 +31,25 @@ const runGame = userEmo => {
   // Destructure the type like "rocks", "papers" and the array
   const [type, allColorVariants] = emojiEntry;
 
-  userEmo = allColorVariants[0]
+  userEmo = allColorVariants[0];
 
   console.log(type, allColorVariants);
 
+  //winning condition for bot user will lose
   const isitWin = () => {
-    //winning condition for bot user will lose
-    if (
-      (userEmo == emos.paper && botEmo == emos.scissor) ||
-      (userEmo == emos.rock && botEmo == emos.paper) ||
-      (userEmo == emos.scissor && botEmo == emos.rock)
-    ) {
-      return "You lost the game!";
-    } else if (
-      (userEmo == emos.scissor && botEmo == emos.paper) ||
-      (userEmo == emos.paper && botEmo == emos.rock) ||
-      (userEmo == emos.rock && botEmo == emos.scissor)
-    ) {
-      return "You won! *Congrats*";
-    } else if (userEmo == botEmo) {
-      return "It's draw!";
-    } else {
-      return "You sent unknown emoji";
+    //get object values in array and check if emoji is there
+    if (!Object.values(emos).includes(userEmo)) {
+      return `You sen't an unknown emoji 😒`;
+    } // if both emoji are same then its a draw
+    else if (userEmo === botEmo) {
+      return `Oh! It's a draw 🤐`;
+    }
+    //now if our condition is matched with bot then user lost
+    else if (matches[userEmo] === botEmo) {
+      return `You los't the game 😂\n Try again`;
+    } // if none is true then user has won the game
+    else {
+      return `Oh No!\n You won 🏆 congrats`;
     }
   };
 
