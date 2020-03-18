@@ -19,7 +19,6 @@ const matches = {
   [rock]: scissor
 };
 
-if (matches[userEmo] === botEmo)
   const runGame = userEmo => {
     // get a random emoji
     const botEmo = randomRPSEmo();
